@@ -13,8 +13,9 @@ namespace UnitConvertor
 
             var units = new List<ConversionData>();
             units.Add(new ConversionData { FromUnit = "°C", ToUnit = "°F", MathOperation = MathOperations.CtoF, Koeficient = 20 });
+            units.Add(new ConversionData { FromUnit = "°F", ToUnit = "°C", MathOperation = MathOperations.FtoC, Koeficient = 20 });
 
-            var selectedConversion = units.Where(u => u.FromUnit.ToLower() == fromUnit.ToLower() && u.ToUnit.ToLower() == toUnit.ToLower()).FirstOrDefault();
+            var selectedConversion = units.Where(u => u.FromUnit == fromUnit && u.ToUnit == toUnit).FirstOrDefault();
 
             var unitConvertor = new MathOperationsFormulas();
             var mathOperation = selectedConversion.MathOperation;
@@ -29,6 +30,11 @@ namespace UnitConvertor
                 case MathOperations.CtoF:
                     {
                         resultNumber = unitConvertor.CtoF(number);
+                        break;
+                    }
+                case MathOperations.FtoC:
+                    {
+                        resultNumber = unitConvertor.FtoC(number);
                         break;
                     }
                 default:

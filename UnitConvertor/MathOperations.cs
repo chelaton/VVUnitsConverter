@@ -9,6 +9,7 @@ namespace UnitConvertor
     public enum MathOperations
     {
         CtoF,
+        FtoC,
         Add,
         Subtract
     }
